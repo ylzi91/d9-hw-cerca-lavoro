@@ -2,6 +2,7 @@ import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { addToFavoriteAction, removeToFavoriteAction } from '../redux/actions'
 
 function Job({ data }){
   const [deleteBut, setDeletBut] = useState(false)
@@ -34,17 +35,11 @@ function Job({ data }){
         <Button variant={mySelector.filter((jobs) => jobs._id === data._id)[0]?._id !== data._id ? 'success': 'danger'} onClick={() =>{
           handlerBut()
           if(mySelector.filter((jobs) => jobs._id === data._id)[0]?._id !== data._id){
-            dispatch({
-              type: 'ADD_TO_FAVORITES',
-              payload: data
-            })
+            dispatch(addToFavoriteAction(data))
           }
           else {
-            dispatch({
-              type: 'REMOVE_TO_FAVORITES',
-              payload: data._id
-            })
-            
+            console.log('Entra ELse')
+            dispatch(removeToFavoriteAction(data))
           }
         }
           

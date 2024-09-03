@@ -4,10 +4,12 @@ import MainSearch from "./components/MainSearch";
 import CompanySearchResults from "./components/CompanySearchResults";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favurites from "./components/Favourites";
+import HomeHeader from "./components/HomeHeader";
 
 function App() {
   return (
     <BrowserRouter>
+    <HomeHeader/>
       <Routes>
         <Route path="/" element={<MainSearch />} />
         <Route path="/:company" element={<CompanySearchResults />} />
